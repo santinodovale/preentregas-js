@@ -1,16 +1,26 @@
-const nombre = prompt("¡Hola! ¿Cuál es tu nombre?");
-let cantCamaras = prompt("¿Cuántas cámaras deseas comprar?");
-let precio = prompt("¿Cuál es el precio unitario de la cámara en dólares?");
+const nombreUsuario = prompt("¡Hola! ¿Cuál es tu nombre?");
+let costoTotal = 0;
+let continuar = true;
 
-cantCamaras = parseInt(cantCamaras);
-precio = parseFloat(precio);
+while (continuar) {
+  let entradaPrecio = prompt(
+    "Hola " + nombreUsuario + ', ingresa el precio de la cámara que deseas comprar\n\n(O escribe "salir" para finalizar la compra):'
+  );
 
-let costoTotal = cantCamaras * precio;
+  if (entradaPrecio === "salir") {
+    continuar = false;
+  } else {
+    let precioCamara = entradaPrecio;
 
-const mensajeBienvenida = "Gracias por tu visita, " + nombre + ". Has seleccionado " + cantCamaras + " cámara(s).";
-const mensajeTotal = "El costo total de tu compra es de: $" + costoTotal + " USD.";
+    if (precioCamara > 0) {
+      costoTotal = costoTotal + precioCamara;
+      alert("¡Cámara agregada!\nTu subtotal actual es de: $" + costoTotal + " USD.");
 
-console.log(mensajeBienvenida);
-console.log(mensajeTotal);
+    } else {
+      alert('Por favor, ingresa un precio válido en números o escribe "salir" para finalizar la compra.');
 
-alert(mensajeBienvenida + "\n" + mensajeTotal);
+    }
+  }
+}
+
+alert("Gracias por tu compra, " + nombreUsuario + ". El costo total final es de: $" + costoTotal + " USD.");
